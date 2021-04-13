@@ -1,0 +1,23 @@
+name: easy_container_demo
+description: A new Flutter application to demonstrate how to use the easy_container pub.dev package.
+
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  easy_container:
+    path: "../"
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
