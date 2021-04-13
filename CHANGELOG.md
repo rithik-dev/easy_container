@@ -1,3 +1,3 @@
-## [0.0.1] - TODO: Add release date.
+## [0.0.1] - 13/04/2021
 
-* TODO: Describe initial release.
+* An easy to use container for flutter with in built gesture detectors and a lot of customization.

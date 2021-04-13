@@ -3,20 +3,6 @@ library easy_container;
 import 'package:flutter/material.dart';
 
 class EasyContainer extends StatefulWidget {
-  final VoidCallback? onTap;
-  final Widget child;
-  final EdgeInsets padding;
-  final double? height;
-  final double? width;
-  final double borderWidth;
-  final EdgeInsets? margin;
-  final Color? borderColor;
-  final Color? backgroundColor;
-  final double borderRadius;
-  final Color? shadowColor;
-  final double elevation;
-  final bool zeroDownElevationOnTap;
-
   const EasyContainer({
     required this.child,
     this.onTap,
@@ -32,6 +18,64 @@ class EasyContainer extends StatefulWidget {
     this.borderWidth = 1,
     this.elevation = 5,
   });
+
+  /// Called every time [EasyContainer] is tapped;
+  final VoidCallback? onTap;
+
+  /// The child of the container.
+  final Widget child;
+
+  /// The amount of space by which to inset the child.
+  ///
+  /// Defaults to `const EdgeInsets.all(10)`.
+  final EdgeInsets padding;
+
+  /// Height of the [EasyContainer].
+  final double? height;
+
+  /// Width of the [EasyContainer].
+  final double? width;
+
+  /// Width of the border (if any).
+  /// If [borderColor] is not passed, this parameter has no effect.
+  ///
+  /// Defaults to 1.
+  final double borderWidth;
+
+  /// The empty space that surrounds the card.
+  final EdgeInsets? margin;
+
+  /// Color of the border.
+  ///
+  /// See also
+  /// * [borderWidth] parameter.
+  final Color? borderColor;
+
+  /// The container's background color.
+  final Color? backgroundColor;
+
+  /// The border radius for each corner.
+  ///
+  /// Defaults to 5.
+  final double borderRadius;
+
+  /// Color of the card's shadow.
+  ///
+  /// If null, [backgroundColor] is used as the [shadowColor].
+  /// If [backgroundColor] is also null, accent color is used.
+  final Color? shadowColor;
+
+  /// The z-coordinate at which to place this card. This controls the size of
+  /// the shadow below the card.
+  ///
+  /// Defaults to 5.
+  final double elevation;
+
+  /// If true, when the card is tapped, or long pressed,
+  /// the card deepens down giving a cool effect.
+  ///
+  /// Defaults to true.
+  final bool zeroDownElevationOnTap;
 
   @override
   _EasyContainerState createState() => _EasyContainerState();
