@@ -5,14 +5,15 @@ import 'package:flutter/rendering.dart' show MouseCursor;
 
 class EasyContainer extends StatefulWidget {
   const EasyContainer({
+    Key? key,
     required this.child,
     this.onTap,
     this.height,
     this.width,
-    this.margin,
-    this.borderColor,
+    this.margin = 5,
+    this.customMargin,
     this.shadowColor,
-    this.backgroundColor,
+    this.color,
     this.onHighlightChanged,
     this.onDoubleTap,
     this.onLongPress,
@@ -30,16 +31,22 @@ class EasyContainer extends StatefulWidget {
     this.customBorder,
     this.focusNode,
     this.onFocusChange,
+    this.borderOnForeground = true,
+    this.semanticContainer = true,
     this.canRequestFocus = true,
     this.autofocus = false,
     this.enableFeedback = true,
     this.excludeFromSemantics = false,
     this.allowOverflow = false,
     this.borderRadius = 5,
-    this.borderWidth = 1,
+    this.customBorderRadius,
     this.elevation = 5,
-    this.padding = const EdgeInsets.all(10),
+    this.padding = 10,
+    this.customPadding,
     this.zeroDownElevationOnTap = true,
+    this.borderWidth = 1,
+    this.borderColor = Colors.black,
+    this.borderStyle = BorderStyle.solid,
   });
 
   /// Called every time [EasyContainer] is tapped;
@@ -49,9 +56,23 @@ class EasyContainer extends StatefulWidget {
   final Widget child;
 
   /// The amount of space by which to inset the child.
+  /// The double passed as padding is applied from all the sides.
   ///
-  /// Defaults to `const EdgeInsets.all(10)`.
-  final EdgeInsets padding;
+  /// Shorthand for `EdgeInsets.all(padding)`
+  ///
+  /// If [customPadding] is passed, then [padding] is ignored.
+  ///
+  /// Defaults to 10.
+  ///
+  /// See also
+  /// * [customPadding] parameter.
+  final double padding;
+
+  /// The amount of space by which to inset the child.
+  ///
+  /// See also
+  /// * [padding] parameter.
+  final EdgeInsets? customPadding;
 
   /// Height of the [EasyContainer].
   final double? height;
@@ -66,26 +87,65 @@ class EasyContainer extends StatefulWidget {
   final double borderWidth;
 
   /// The empty space that surrounds the card.
-  final EdgeInsets? margin;
+  /// The double passed as margin is applied to all the sides.
+  ///
+  /// Shorthand for `EdgeInsets.all(margin)`
+  ///
+  /// If [customMargin] is passed, then [margin] is ignored.
+  ///
+  /// Defaults to 5.
+  ///
+  /// See also
+  /// * [customMargin] parameter.
+  final double margin;
+
+  /// The empty space that surrounds the card.
+  ///
+  /// See also
+  /// * [margin] parameter.
+  final EdgeInsets? customMargin;
 
   /// Color of the border.
   ///
   /// See also
   /// * [borderWidth] parameter.
-  final Color? borderColor;
+  ///
+  /// Defaults to [Colors.black].
+  final Color borderColor;
+
+  /// The style of line to draw for a [BorderSide] in a [Border].
+  ///
+  /// Defaults to [BorderStyle.solid].
+  final BorderStyle borderStyle;
 
   /// The container's background color.
-  final Color? backgroundColor;
+  ///
+  /// If null, accent color is used.
+  final Color? color;
+
+  /// The border radius for each corner.
+  /// The double passed as borderRadius is applied to all the corners.
+  ///
+  /// Shorthand for `BorderRadius.circular(borderRadius)`
+  ///
+  /// If [customBorderRadius] is passed, then [borderRadius] is ignored.
+  ///
+  /// Defaults to 5.
+  ///
+  /// See also
+  /// * [customBorderRadius] parameter.
+  final double borderRadius;
 
   /// The border radius for each corner.
   ///
-  /// Defaults to 5.
-  final double borderRadius;
+  /// See also
+  /// * [borderRadius] parameter.
+  final BorderRadius? customBorderRadius;
 
   /// Color of the card's shadow.
   ///
-  /// If null, [backgroundColor] is used as the [shadowColor].
-  /// If [backgroundColor] is also null, accent color is used.
+  /// If null, the [color] parameter is used as the [shadowColor].
+  /// If [color] parameter is also null, accent color is used.
   final Color? shadowColor;
 
   /// The z-coordinate at which to place this card. This controls the size of
@@ -309,6 +369,25 @@ class EasyContainer extends StatefulWidget {
   /// Must not be null. Defaults to false.
   final bool autofocus;
 
+  /// Whether to paint the border in front of the [child].
+  ///
+  /// The default value is true.
+  /// If false, the border will be painted behind the [child].
+  final bool borderOnForeground;
+
+  /// Whether this widget represents a single semantic container, or if false
+  /// a collection of individual semantic nodes.
+  ///
+  /// Defaults to true.
+  ///
+  /// Setting this flag to true will attempt to merge all child semantics into
+  /// this node. Setting this flag to false will force all child semantic nodes
+  /// to be explicit.
+  ///
+  /// This flag should be false if the card contains multiple different types
+  /// of content.
+  final bool semanticContainer;
+
   @override
   _EasyContainerState createState() => _EasyContainerState();
 }
@@ -324,28 +403,33 @@ class _EasyContainerState extends State<EasyContainer> {
 
   @override
   Widget build(BuildContext context) {
+    final _borderRadius = this.widget.customBorderRadius ??
+        BorderRadius.circular(this.widget.borderRadius);
+
     return SizedBox(
+      key: this.widget.key,
       height: this.widget.height,
       width: this.widget.width,
       child: Card(
+        borderOnForeground: this.widget.borderOnForeground,
+        semanticContainer: this.widget.semanticContainer,
         shape: RoundedRectangleBorder(
-          side: this.widget.borderColor != null
-              ? BorderSide(
-                  color: this.widget.borderColor!,
-                  width: this.widget.borderWidth,
-                )
-              : BorderSide.none,
-          borderRadius: BorderRadius.circular(this.widget.borderRadius),
+          side: BorderSide(
+            color: this.widget.borderColor,
+            width: this.widget.borderWidth,
+            style: this.widget.borderStyle,
+          ),
+          borderRadius: _borderRadius,
         ),
-        color: this.widget.backgroundColor ?? Theme.of(context).accentColor,
+        color: this.widget.color ?? Theme.of(context).accentColor,
         elevation: _elevation,
-        margin: this.widget.margin,
+        margin: this.widget.customMargin ?? EdgeInsets.all(this.widget.margin),
         shadowColor: this.widget.shadowColor ??
-            this.widget.backgroundColor ??
+            this.widget.color ??
             Theme.of(context).accentColor,
         clipBehavior: this.widget.allowOverflow ? null : Clip.hardEdge,
         child: InkWell(
-          borderRadius: BorderRadius.circular(this.widget.borderRadius),
+          borderRadius: _borderRadius,
           radius: this.widget.inkSplashRadius,
           onDoubleTap: this.widget.onDoubleTap,
           onLongPress: this.widget.onLongPress,
@@ -381,7 +465,8 @@ class _EasyContainerState extends State<EasyContainer> {
               return this.widget.onHighlightChanged!(v);
           },
           child: Padding(
-            padding: this.widget.padding,
+            padding: this.widget.customPadding ??
+                EdgeInsets.all(this.widget.padding),
             child: this.widget.child,
           ),
         ),
