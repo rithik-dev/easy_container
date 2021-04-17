@@ -15,11 +15,9 @@ class MyApp extends StatelessWidget {
           body: Center(
             child: EasyContainer(
               height: 150,
-              child: Center(
-                child: Text(
-                  "Hello World ...",
-                  style: TextStyle(fontSize: 25),
-                ),
+              child: Text(
+                "Hello World ...",
+                style: TextStyle(fontSize: 25),
               ),
               padding: 20,
               elevation: 10,

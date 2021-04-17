@@ -41,6 +41,53 @@ EasyContainer(
 ),
 ```
 
+Want to add some padding/margin/borderRadius?
+
+Padding from all sides can be added by passing `padding` as a double.
+If you want to customize padding, then use `customPadding` which expects `EdgeInsets` allowing for customization.
+
+If `customPadding` is passed, `padding` is ignored.
+
+Same applies for margin and borderRadius.
+```dart
+EasyContainer(
+    child: Text("Hello World"),
+    onTap: () => print("Hello World"),
+    padding: 20,
+
+    /// if customPadding passed, padding is ignored.
+    /// Hence padding applied to container is 10 from all sides.
+
+    customPadding: EdgeInsets.all(10),
+),
+```
+
+The default `alignment` is center.
+So the container tries to take as much space as possible.
+To deny the same, you can set the `alignment` to null or specify height/width.
+```dart
+EasyContainer(
+    child: Text("Hello World"),
+    onTap: () => print("Hello World"),
+
+    /// child not longer takes all the available space
+    alignment: null,
+),
+```
+
+To enable a border, `showBorder` must be true. Defaults to false.
+
+If `showBorder` is true, parameters like borderColor, borderWidth, borderStyle come into play.
+```dart
+EasyContainer(
+    child: Text("Hello World"),
+    onTap: () => print("Hello World"),
+    showBorder: true,
+    borderWidth: 5,
+    borderColor: Colors.red,
+),
+```
+
 Sample Usage
 ```dart
 import 'package:easy_container/easy_container.dart';
@@ -60,11 +107,9 @@ class MyApp extends StatelessWidget {
           body: Center(
             child: EasyContainer(
               height: 150,
-              child: Center(
-                child: Text(
-                  "Hello World ...",
-                  style: TextStyle(fontSize: 25),
-                ),
+              child: Text(
+                "Hello World ...",
+                style: TextStyle(fontSize: 25),
               ),
               padding: 20,
               elevation: 10,
@@ -81,6 +126,9 @@ class MyApp extends StatelessWidget {
 }
 
 ```
+
+And a lot more.... There is a lot of customization available which is self explantory.
+You can the read the full documentation [`here`](https://github.com/rithik-dev/easy_container/blob/master/lib/easy_container.dart).
 
 See the [`example`](https://github.com/rithik-dev/easy_container/blob/master/example) directory for a complete sample app.
 

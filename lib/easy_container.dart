@@ -31,6 +31,9 @@ class EasyContainer extends StatefulWidget {
     this.customBorder,
     this.focusNode,
     this.onFocusChange,
+    this.alignmentWidthFactor,
+    this.alignmentHeightFactor,
+    this.alignment = Alignment.center,
     this.borderOnForeground = true,
     this.semanticContainer = true,
     this.canRequestFocus = true,
@@ -44,6 +47,7 @@ class EasyContainer extends StatefulWidget {
     this.padding = 10,
     this.customPadding,
     this.zeroDownElevationOnTap = true,
+    this.showBorder = false,
     this.borderWidth = 1,
     this.borderColor = Colors.black,
     this.borderStyle = BorderStyle.solid,
@@ -84,6 +88,9 @@ class EasyContainer extends StatefulWidget {
   /// If [borderColor] is not passed, this parameter has no effect.
   ///
   /// Defaults to 1.
+  ///
+  /// See also
+  /// * [showBorder] parameter.
   final double borderWidth;
 
   /// The empty space that surrounds the card.
@@ -111,11 +118,17 @@ class EasyContainer extends StatefulWidget {
   /// * [borderWidth] parameter.
   ///
   /// Defaults to [Colors.black].
+  ///
+  /// See also
+  /// * [showBorder] parameter.
   final Color borderColor;
 
   /// The style of line to draw for a [BorderSide] in a [Border].
   ///
   /// Defaults to [BorderStyle.solid].
+  ///
+  /// See also
+  /// * [showBorder] parameter.
   final BorderStyle borderStyle;
 
   /// The container's background color.
@@ -373,6 +386,9 @@ class EasyContainer extends StatefulWidget {
   ///
   /// The default value is true.
   /// If false, the border will be painted behind the [child].
+  ///
+  /// See also
+  /// * [showBorder] parameter.
   final bool borderOnForeground;
 
   /// Whether this widget represents a single semantic container, or if false
@@ -387,6 +403,41 @@ class EasyContainer extends StatefulWidget {
   /// This flag should be false if the card contains multiple different types
   /// of content.
   final bool semanticContainer;
+
+  /// Align the [child] within the container.
+  ///
+  /// If non-null, the container will expand to fill its parent and position its
+  /// child within itself according to the given value. If the incoming
+  /// constraints are unbounded, then the child will be shrink-wrapped instead.
+  ///
+  /// Defaults to [Alignment.center].
+  ///
+  /// See also:
+  ///
+  ///  * [Alignment], a class with convenient constants typically used to
+  ///    specify an [AlignmentGeometry].
+  ///  * [AlignmentDirectional], like [Alignment] for specifying alignments
+  ///    relative to text direction.
+  final AlignmentGeometry? alignment;
+
+  /// If non-null, sets its height to the child's height multiplied by this factor.
+  ///
+  /// Can be both greater and less than 1.0 but must be non-negative.
+  ///
+  /// If [alignment] is null, then [alignmentHeightFactor] has no effect.
+  final double? alignmentHeightFactor;
+
+  /// If non-null, sets its width to the child's width multiplied by this factor.
+  ///
+  /// Can be both greater and less than 1.0 but must be non-negative.
+  ///
+  /// If [alignment] is null, then [alignmentWidthFactor] has no effect.
+  final double? alignmentWidthFactor;
+
+  /// Whether to show the container's border or not
+  ///
+  /// Defaults to false.
+  final bool showBorder;
 
   @override
   _EasyContainerState createState() => _EasyContainerState();
@@ -414,11 +465,13 @@ class _EasyContainerState extends State<EasyContainer> {
         borderOnForeground: this.widget.borderOnForeground,
         semanticContainer: this.widget.semanticContainer,
         shape: RoundedRectangleBorder(
-          side: BorderSide(
-            color: this.widget.borderColor,
-            width: this.widget.borderWidth,
-            style: this.widget.borderStyle,
-          ),
+          side: this.widget.showBorder
+              ? BorderSide(
+                  color: this.widget.borderColor,
+                  width: this.widget.borderWidth,
+                  style: this.widget.borderStyle,
+                )
+              : BorderSide.none,
           borderRadius: _borderRadius,
         ),
         color: this.widget.color ?? Theme.of(context).accentColor,
@@ -467,7 +520,14 @@ class _EasyContainerState extends State<EasyContainer> {
           child: Padding(
             padding: this.widget.customPadding ??
                 EdgeInsets.all(this.widget.padding),
-            child: this.widget.child,
+            child: (this.widget.alignment == null)
+                ? this.widget.child
+                : Align(
+                    alignment: this.widget.alignment!,
+                    heightFactor: this.widget.alignmentHeightFactor,
+                    widthFactor: this.widget.alignmentWidthFactor,
+                    child: this.widget.child,
+                  ),
           ),
         ),
       ),

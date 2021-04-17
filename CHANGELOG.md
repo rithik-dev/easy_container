@@ -1,3 +1,10 @@
+## [0.0.3] - 17/04/2021
+
+* Added custom parameters to padding, margin, border radius and shorthands for the same
+* Added alignment parameter to align the child in center by default.
+* Added showBorder to enable/disable border.
+* Updated README.md
+
 ## [0.0.2] - 13/04/2021
 
 * Added more parameters hence increasing the customizability.
