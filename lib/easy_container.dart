@@ -444,16 +444,16 @@ class EasyContainer extends StatefulWidget {
 }
 
 class _EasyContainerState extends State<EasyContainer> {
+  /// Elevation of the container.
   late double _elevation;
 
-  @override
-  void initState() {
-    _elevation = widget.elevation;
-    super.initState();
-  }
+  /// Whether the container is tapped or not.
+  bool _isPressed = false;
 
   @override
   Widget build(BuildContext context) {
+    if (!_isPressed) _elevation = widget.elevation;
+
     final _borderRadius = this.widget.customBorderRadius ??
         BorderRadius.circular(this.widget.borderRadius);
 
@@ -506,6 +506,7 @@ class _EasyContainerState extends State<EasyContainer> {
           onTap: this.widget.onTap,
           onHighlightChanged: (v) {
             if (this.widget.zeroDownElevationOnTap) {
+              _isPressed = v;
               if (widget.elevation == 0)
                 return;
               else if (widget.elevation <= 2.5)

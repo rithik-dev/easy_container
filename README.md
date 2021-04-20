@@ -7,7 +7,7 @@
 *An easy to use container for flutter with built in gesture detectors and a lot of customization.*
 
 ### Screenshots
-<img src="https://user-images.githubusercontent.com/56810766/114513858-46929a00-9c58-11eb-9e17-99b3df0a5e92.png" height=600/>&nbsp;&nbsp;<img src="https://user-images.githubusercontent.com/56810766/114513863-46929a00-9c58-11eb-9870-f75a3c6963b1.png" height=600/>&nbsp;&nbsp;<img src="https://user-images.githubusercontent.com/56810766/114513854-45616d00-9c58-11eb-8618-8c9bead46cc2.png" height=600/>
+<img src="https://user-images.githubusercontent.com/56810766/115352432-fc1f9900-a1d4-11eb-8c3a-79b2baa46104.png" height=600/>&nbsp;&nbsp;<img src="https://user-images.githubusercontent.com/56810766/114513858-46929a00-9c58-11eb-9e17-99b3df0a5e92.png" height=600/>&nbsp;&nbsp;<img src="https://user-images.githubusercontent.com/56810766/114513863-46929a00-9c58-11eb-9870-f75a3c6963b1.png" height=600/>
 
 ## Usage
 
@@ -33,7 +33,7 @@ EasyContainer(
 ),
 ```
 
-If an onTap parameter is provided, it can be used as a button.
+If an onTap, onLongPress etc. parameters are provided, it can be used as a button.
 ```dart
 EasyContainer(
     child: Text("Hello World"),
@@ -41,7 +41,7 @@ EasyContainer(
 ),
 ```
 
-Want to add some padding/margin/borderRadius?
+Want to add some `padding`/`margin`/`borderRadius`?
 
 Padding from all sides can be added by passing `padding` as a double.
 If you want to customize padding, then use `customPadding` which expects `EdgeInsets` allowing for customization.
@@ -53,6 +53,8 @@ Same applies for margin and borderRadius.
 EasyContainer(
     child: Text("Hello World"),
     onTap: () => print("Hello World"),
+    
+    /// Shorthand for EdgeInsets.all(20)
     padding: 20,
 
     /// if customPadding passed, padding is ignored.
@@ -127,7 +129,8 @@ class MyApp extends StatelessWidget {
 
 ```
 
-And a lot more.... There is a lot of customization available which is self explantory.
+And a lot more.... 
+There is a lot of customization available which is self explantory.
 You can the read the full documentation [`here`](https://github.com/rithik-dev/easy_container/blob/master/lib/easy_container.dart).
 
 See the [`example`](https://github.com/rithik-dev/easy_container/blob/master/example) directory for a complete sample app.

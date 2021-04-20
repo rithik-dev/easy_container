@@ -1,3 +1,8 @@
+## [0.0.4] - 20/04/2021
+
+* No need to hot restart to see changes in elevation
+* Updated README.md
+
 ## [0.0.3] - 17/04/2021
 
 * Added custom parameters to padding, margin, border radius and shorthands for the same
