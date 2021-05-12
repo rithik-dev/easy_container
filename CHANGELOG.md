@@ -1,3 +1,7 @@
+## [0.0.6] - 12/05/2021
+
+* Removed pubspec.yaml comments
+
 ## [0.0.5] - 12/05/2021
 
 * Fixed key parameter
