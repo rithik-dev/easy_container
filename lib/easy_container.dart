@@ -51,7 +51,7 @@ class EasyContainer extends StatefulWidget {
     this.borderWidth = 1,
     this.borderColor = Colors.black,
     this.borderStyle = BorderStyle.solid,
-  });
+  }) : super(key: key);
 
   /// Called every time [EasyContainer] is tapped;
   final VoidCallback? onTap;
@@ -458,7 +458,6 @@ class _EasyContainerState extends State<EasyContainer> {
         BorderRadius.circular(this.widget.borderRadius);
 
     return SizedBox(
-      key: this.widget.key,
       height: this.widget.height,
       width: this.widget.width,
       child: Card(

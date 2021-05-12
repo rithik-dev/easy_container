@@ -1,3 +1,7 @@
+## [0.0.5] - 12/05/2021
+
+* Fixed key parameter
+
 ## [0.0.4] - 20/04/2021
 
 * No need to hot restart to see changes in elevation
