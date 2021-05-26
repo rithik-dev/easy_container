@@ -1,6 +1,6 @@
 name: easy_container
 description: An easy to use container for flutter with built in gesture detectors and a lot of customization.
-version: 0.0.6
+version: 0.0.7
 homepage: https://github.com/rithik-dev/easy_container
 
 environment:

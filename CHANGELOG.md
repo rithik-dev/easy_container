@@ -1,3 +1,8 @@
+## [0.0.7] - 26/05/2021
+
+* Updated README.md
+* Updated example app
+
 ## [0.0.6] - 12/05/2021
 
 * Removed pubspec.yaml comments

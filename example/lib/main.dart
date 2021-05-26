@@ -1,9 +1,7 @@
 import 'package:easy_container/easy_container.dart';
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(MyApp());
-}
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   @override
@@ -14,17 +12,18 @@ class MyApp extends StatelessWidget {
         child: Scaffold(
           body: Center(
             child: EasyContainer(
-              height: 150,
-              child: Text(
-                "Hello World ...",
-                style: TextStyle(fontSize: 25),
+              height: 300,
+              width: 300,
+              child: CircularProgressIndicator(
+                valueColor: AlwaysStoppedAnimation<Color>(Colors.yellow),
+                strokeWidth: 3,
               ),
               padding: 20,
               elevation: 10,
               onTap: () => print("Container Tapped"),
               margin: 20,
               borderRadius: 20,
-              color: Colors.orange,
+              color: Colors.red,
             ),
           ),
         ),

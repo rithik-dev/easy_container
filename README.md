@@ -7,7 +7,7 @@
 *An easy to use container for flutter with built in gesture detectors and a lot of customization.*
 
 ### Screenshots
-<img src="https://user-images.githubusercontent.com/56810766/115352432-fc1f9900-a1d4-11eb-8c3a-79b2baa46104.png" height=600/>&nbsp;&nbsp;<img src="https://user-images.githubusercontent.com/56810766/114513858-46929a00-9c58-11eb-9e17-99b3df0a5e92.png" height=600/>&nbsp;&nbsp;<img src="https://user-images.githubusercontent.com/56810766/114513863-46929a00-9c58-11eb-9870-f75a3c6963b1.png" height=600/>
+<img src="https://user-images.githubusercontent.com/56810766/115352432-fc1f9900-a1d4-11eb-8c3a-79b2baa46104.png" height=600/>&nbsp;&nbsp;<img src="https://user-images.githubusercontent.com/56810766/119640316-1da81c00-be36-11eb-83fd-fcffda516f1e.gif" height=600/>
 
 ## Usage
 
