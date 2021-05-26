@@ -1,3 +1,7 @@
+## [0.0.8] - 26/05/2021
+
+* Updated README.md
+
 ## [0.0.7] - 26/05/2021
 
 * Updated README.md
