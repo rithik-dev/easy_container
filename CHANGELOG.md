@@ -1,3 +1,7 @@
+## [0.0.9] - 09/09/2021
+
+* Synced with flutter 2.5 (accentColor deprecated)
+
 ## [0.0.8] - 26/05/2021
 
 * Updated README.md

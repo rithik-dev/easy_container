@@ -133,7 +133,7 @@ class EasyContainer extends StatefulWidget {
 
   /// The container's background color.
   ///
-  /// If null, accent color is used.
+  /// If null, colorScheme.secondary is used.
   final Color? color;
 
   /// The border radius for each corner.
@@ -158,7 +158,7 @@ class EasyContainer extends StatefulWidget {
   /// Color of the card's shadow.
   ///
   /// If null, the [color] parameter is used as the [shadowColor].
-  /// If [color] parameter is also null, accent color is used.
+  /// If [color] parameter is also null, colorScheme.secondary is used.
   final Color? shadowColor;
 
   /// The z-coordinate at which to place this card. This controls the size of
@@ -473,12 +473,12 @@ class _EasyContainerState extends State<EasyContainer> {
               : BorderSide.none,
           borderRadius: _borderRadius,
         ),
-        color: this.widget.color ?? Theme.of(context).accentColor,
+        color: this.widget.color ?? Theme.of(context).colorScheme.secondary,
         elevation: _elevation,
         margin: this.widget.customMargin ?? EdgeInsets.all(this.widget.margin),
         shadowColor: this.widget.shadowColor ??
             this.widget.color ??
-            Theme.of(context).accentColor,
+            Theme.of(context).colorScheme.secondary,
         clipBehavior: this.widget.allowOverflow ? null : Clip.hardEdge,
         child: InkWell(
           borderRadius: _borderRadius,

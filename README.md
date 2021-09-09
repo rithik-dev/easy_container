@@ -131,7 +131,7 @@ class MyApp extends StatelessWidget {
 ```
 
 And a lot more.... 
-There is a lot of customization available which is self explantory.
+There is a lot of customization available which is self explanatory.
 You can the read the full documentation [`here`](https://github.com/rithik-dev/easy_container/blob/master/lib/easy_container.dart).
 
 See the [`example`](https://github.com/rithik-dev/easy_container/blob/master/example) directory for a complete sample app.
