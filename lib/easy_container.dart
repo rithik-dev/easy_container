@@ -43,7 +43,7 @@ class EasyContainer extends StatefulWidget {
     this.allowOverflow = false,
     this.borderRadius = 5,
     this.customBorderRadius,
-    this.elevation = 5,
+    this.elevation = 1.5,
     this.padding = 10,
     this.customPadding,
     this.zeroDownElevationOnTap = true,
@@ -164,7 +164,7 @@ class EasyContainer extends StatefulWidget {
   /// The z-coordinate at which to place this card. This controls the size of
   /// the shadow below the card.
   ///
-  /// Defaults to 5.
+  /// Defaults to 1.5
   final double elevation;
 
   /// If true, when the card is tapped, or long pressed,

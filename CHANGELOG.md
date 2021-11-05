@@ -1,3 +1,7 @@
+## [1.0.0] - 05/11/2021
+
+* Updated default elevation to 1.5
+
 ## [0.0.9] - 09/09/2021
 
 * Synced with flutter 2.5 (accentColor deprecated)
