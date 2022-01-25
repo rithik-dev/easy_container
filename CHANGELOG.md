@@ -1,3 +1,9 @@
+## [1.0.1] - 26/01/2022
+
+* Added linter and updated code accordingly
+* Updated example app
+* Updated README.md
+
 ## [1.0.0] - 05/11/2021
 
 * Updated default elevation to 1.5

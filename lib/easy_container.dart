@@ -1,7 +1,6 @@
 library easy_container;
 
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart' show MouseCursor;
 
 class EasyContainer extends StatefulWidget {
   const EasyContainer({
@@ -454,79 +453,80 @@ class _EasyContainerState extends State<EasyContainer> {
   Widget build(BuildContext context) {
     if (!_isPressed) _elevation = widget.elevation;
 
-    final _borderRadius = this.widget.customBorderRadius ??
-        BorderRadius.circular(this.widget.borderRadius);
+    final _borderRadius =
+        widget.customBorderRadius ?? BorderRadius.circular(widget.borderRadius);
 
     return SizedBox(
-      height: this.widget.height,
-      width: this.widget.width,
+      height: widget.height,
+      width: widget.width,
       child: Card(
-        borderOnForeground: this.widget.borderOnForeground,
-        semanticContainer: this.widget.semanticContainer,
+        borderOnForeground: widget.borderOnForeground,
+        semanticContainer: widget.semanticContainer,
         shape: RoundedRectangleBorder(
-          side: this.widget.showBorder
+          side: widget.showBorder
               ? BorderSide(
-                  color: this.widget.borderColor,
-                  width: this.widget.borderWidth,
-                  style: this.widget.borderStyle,
+                  color: widget.borderColor,
+                  width: widget.borderWidth,
+                  style: widget.borderStyle,
                 )
               : BorderSide.none,
           borderRadius: _borderRadius,
         ),
-        color: this.widget.color ?? Theme.of(context).colorScheme.secondary,
+        color: widget.color ?? Theme.of(context).colorScheme.secondary,
         elevation: _elevation,
-        margin: this.widget.customMargin ?? EdgeInsets.all(this.widget.margin),
-        shadowColor: this.widget.shadowColor ??
-            this.widget.color ??
+        margin: widget.customMargin ?? EdgeInsets.all(widget.margin),
+        shadowColor: widget.shadowColor ??
+            widget.color ??
             Theme.of(context).colorScheme.secondary,
-        clipBehavior: this.widget.allowOverflow ? null : Clip.hardEdge,
+        clipBehavior: widget.allowOverflow ? null : Clip.hardEdge,
         child: InkWell(
           borderRadius: _borderRadius,
-          radius: this.widget.inkSplashRadius,
-          onDoubleTap: this.widget.onDoubleTap,
-          onLongPress: this.widget.onLongPress,
-          onTapDown: this.widget.onTapDown,
-          onTapCancel: this.widget.onTapCancel,
-          onHover: this.widget.onHover,
-          mouseCursor: this.widget.mouseCursor,
-          focusColor: this.widget.focusColor,
-          hoverColor: this.widget.hoverColor,
-          highlightColor: this.widget.highlightColor,
-          overlayColor: this.widget.overlayColor,
-          splashColor: this.widget.splashColor,
-          splashFactory: this.widget.splashFactory,
-          customBorder: this.widget.customBorder,
-          focusNode: this.widget.focusNode,
-          onFocusChange: this.widget.onFocusChange,
-          canRequestFocus: this.widget.canRequestFocus,
-          autofocus: this.widget.autofocus,
-          enableFeedback: this.widget.enableFeedback,
-          excludeFromSemantics: this.widget.excludeFromSemantics,
-          onTap: this.widget.onTap,
+          radius: widget.inkSplashRadius,
+          onDoubleTap: widget.onDoubleTap,
+          onLongPress: widget.onLongPress,
+          onTapDown: widget.onTapDown,
+          onTapCancel: widget.onTapCancel,
+          onHover: widget.onHover,
+          mouseCursor: widget.mouseCursor,
+          focusColor: widget.focusColor,
+          hoverColor: widget.hoverColor,
+          highlightColor: widget.highlightColor,
+          overlayColor: widget.overlayColor,
+          splashColor: widget.splashColor,
+          splashFactory: widget.splashFactory,
+          customBorder: widget.customBorder,
+          focusNode: widget.focusNode,
+          onFocusChange: widget.onFocusChange,
+          canRequestFocus: widget.canRequestFocus,
+          autofocus: widget.autofocus,
+          enableFeedback: widget.enableFeedback,
+          excludeFromSemantics: widget.excludeFromSemantics,
+          onTap: widget.onTap,
           onHighlightChanged: (v) {
-            if (this.widget.zeroDownElevationOnTap) {
+            if (widget.zeroDownElevationOnTap) {
               _isPressed = v;
-              if (widget.elevation == 0)
+              if (widget.elevation == 0) {
                 return;
-              else if (widget.elevation <= 2.5)
+              } else if (widget.elevation <= 2.5) {
                 _elevation = v ? 0 : widget.elevation;
-              else
+              } else {
                 _elevation = v ? 2.5 : widget.elevation;
+              }
               setState(() {});
             }
-            if (this.widget.onHighlightChanged != null)
-              return this.widget.onHighlightChanged!(v);
+            if (widget.onHighlightChanged != null) {
+              return widget.onHighlightChanged!(v);
+            }
           },
           child: Padding(
-            padding: this.widget.customPadding ??
-                EdgeInsets.all(this.widget.padding),
-            child: (this.widget.alignment == null)
-                ? this.widget.child
+            padding: widget.customPadding ?? EdgeInsets.all(widget.padding),
+            child: (widget.alignment == null)
+                ? widget.child
                 : Align(
-                    alignment: this.widget.alignment!,
-                    heightFactor: this.widget.alignmentHeightFactor,
-                    widthFactor: this.widget.alignmentWidthFactor,
-                    child: this.widget.child,
+                    alignment: widget.alignment!,
+                    heightFactor: widget.alignmentHeightFactor,
+                    widthFactor: widget.alignmentWidthFactor,
+                    child: widget.child,
                   ),
           ),
         ),
