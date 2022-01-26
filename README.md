@@ -1,4 +1,4 @@
-# EasyContainer For Flutter
+# [EasyContainer](https://pub.dev/packages/easy_container) For Flutter
 [![pub package](https://img.shields.io/pub/v/easy_container.svg)](https://pub.dev/packages/easy_container)
 [![likes](https://badges.bar/easy_container/likes)](https://pub.dev/packages/easy_container/score)
 [![popularity](https://badges.bar/easy_container/popularity)](https://pub.dev/packages/easy_container/score)
