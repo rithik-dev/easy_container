@@ -1,3 +1,7 @@
+## [1.0.3] - 07/02/2022
+
+* Updated default card color
+
 ## [1.0.2] - 26/01/2022
 
 * Updated license
