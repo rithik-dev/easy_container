@@ -439,6 +439,7 @@ class EasyContainer extends StatefulWidget {
   final bool showBorder;
 
   @override
+  // ignore: library_private_types_in_public_api
   _EasyContainerState createState() => _EasyContainerState();
 }
 
@@ -453,7 +454,7 @@ class _EasyContainerState extends State<EasyContainer> {
   Widget build(BuildContext context) {
     if (!_isPressed) _elevation = widget.elevation;
 
-    final _borderRadius =
+    final borderRadius =
         widget.customBorderRadius ?? BorderRadius.circular(widget.borderRadius);
 
     return SizedBox(
@@ -470,7 +471,7 @@ class _EasyContainerState extends State<EasyContainer> {
                   style: widget.borderStyle,
                 )
               : BorderSide.none,
-          borderRadius: _borderRadius,
+          borderRadius: borderRadius,
         ),
         color: widget.color ?? Theme.of(context).cardColor,
         elevation: _elevation,
@@ -479,7 +480,7 @@ class _EasyContainerState extends State<EasyContainer> {
             widget.shadowColor ?? widget.color ?? Theme.of(context).cardColor,
         clipBehavior: widget.allowOverflow ? null : Clip.hardEdge,
         child: InkWell(
-          borderRadius: _borderRadius,
+          borderRadius: borderRadius,
           radius: widget.inkSplashRadius,
           onDoubleTap: widget.onDoubleTap,
           onLongPress: widget.onLongPress,

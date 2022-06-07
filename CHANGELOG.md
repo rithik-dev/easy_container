@@ -1,3 +1,7 @@
+## [1.0.4] - 07/06/2022
+
+* Fixed linter issues
+
 ## [1.0.3] - 07/02/2022
 
 * Updated default card color
