@@ -1,5 +1,6 @@
 ## [1.0.4+1] - 18/03/2023
 
+* Added issue tracker link
 * Updated README badges
 
 ## [1.0.4] - 07/06/2022
