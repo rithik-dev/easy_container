@@ -1,3 +1,7 @@
+## [1.0.4+1] - 18/03/2023
+
+* Updated README badges
+
 ## [1.0.4] - 07/06/2022
 
 * Fixed linter issues

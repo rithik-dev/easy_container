@@ -1,8 +1,10 @@
 # [EasyContainer](https://pub.dev/packages/easy_container) For Flutter
 [![pub package](https://img.shields.io/pub/v/easy_container.svg)](https://pub.dev/packages/easy_container)
-[![likes](https://badges.bar/easy_container/likes)](https://pub.dev/packages/easy_container/score)
-[![popularity](https://badges.bar/easy_container/popularity)](https://pub.dev/packages/easy_container/score)
-[![pub points](https://badges.bar/easy_container/pub%20points)](https://pub.dev/packages/easy_container/score)
+[![code size](https://img.shields.io/github/languages/code-size/rithik-dev/easy_container)](https://github.com/rithik-dev/easy_container)
+[![likes](https://img.shields.io/pub/likes/easy_container)](https://pub.dev/packages/easy_container/score)
+[![popularity](https://img.shields.io/pub/popularity/easy_container)](https://pub.dev/packages/easy_container/score)
+[![pub points](https://img.shields.io/pub/points/easy_container)](https://pub.dev/packages/easy_container/score)
+[![license MIT](https://img.shields.io/badge/license-MIT-purple.svg)](https://opensource.org/licenses/MIT)
 
 *An easy to use container for flutter with built in gesture detectors and a lot of customization.*
 
