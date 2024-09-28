@@ -2,15 +2,28 @@ name: easy_container
 description: An easy to use container for flutter with built in gesture detectors and a lot of customization.
 version: 1.0.4+1
 homepage: https://github.com/rithik-dev/easy_container
+repository: https://github.com/rithik-dev/easy_container
 issue_tracker: https://github.com/rithik-dev/easy_container/issues
+# documentation: https://github.com/rithik-dev/easy_container/blob/master/README.md
+topics: 
+  - flutter
+  - widget
+  - gesture
+  - container
+  - card
 
 environment:
-  sdk: ">=2.12.0 <3.0.0"
+  sdk: ">=2.12.0 <4.0.0"
   flutter: ">=1.17.0"
 
+scripts:
+  pre_publish: dart format .; flutter pub publish --dry-run
+  publish_skip_validation: flutter pub publish --skip-validation
+  publish: flutter pub publish
+  
 dependencies:
   flutter:
     sdk: flutter
 
 dev_dependencies:
-  flutter_lints: ^2.0.1
+  flutter_lints: ^5.0.0
