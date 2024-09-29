@@ -156,6 +156,8 @@ class _MainApp extends StatelessWidget {
 }
 ```
 
+---
+
 # 👤 Collaborators
 
 
