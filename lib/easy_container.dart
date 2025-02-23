@@ -332,7 +332,7 @@ class EasyContainer extends StatefulWidget {
   /// See also:
   ///
   ///  * [Feedback] for providing platform-specific feedback to certain actions.
-  final bool? enableFeedback;
+  final bool enableFeedback;
 
   /// Whether to exclude the gestures introduced by this widget from the
   /// semantics tree.
