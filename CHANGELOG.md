@@ -1,3 +1,7 @@
+# [1.0.5+1]
+
+* **BREAKING:** Made `enableFeedback` non nullable as per Flutter v3.29.0 [CHANGELOG](https://docs.flutter.dev/release/release-notes/release-notes-3.29.0#:~:text=Fix:%20The%20enableFeedback%20property%20of%20InkWell%20cannot%20be%20set%20to%20a%20nullab…%20by%20@StanleyCocos%20in%20158907). (PR [#158907](https://github.com/flutter/flutter/pull/158907))
+
 # [1.0.5]
 
 * Added android and ios example apps
