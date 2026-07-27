@@ -1,0 +1,149 @@
+name: Release & Publish
+
+# Ships a new version of this package. Run it from Actions -> Release & Publish -> Run workflow.
+#
+# You write the release notes yourself under `## Unreleased` in CHANGELOG.md. This workflow bumps
+# pubspec.yaml, promotes that heading to the new version, tags, pushes, then dispatches
+# publish.yml to run `dart pub publish`.
+#
+# Why publishing is a separate workflow: pub.dev rejects any publish whose OIDC token has
+# `refType != 'tag'` (app/lib/package/backend.dart in dart-lang/pub-dev), for `push` and
+# `workflow_dispatch` alike. This job runs on refs/heads/master, and a run's ref is fixed at
+# launch, so it can never publish — that has to be a second run launched on the tag. We dispatch
+# it explicitly because a tag pushed with GITHUB_TOKEN doesn't fire `on: push` triggers.
+#
+# Tags produced here (`v1.2.3`) must match the tag pattern set on pub.dev's admin page:
+# `v{{version}}`.
+on:
+  workflow_dispatch:
+    inputs:
+      bump:
+        description: 'Version bump (pub.dev rejects re-publishing an existing version, so every run must bump)'
+        required: true
+        default: patch
+        type: choice
+        options: [patch, minor, major]
+      allow_empty_changelog:
+        description: 'Release with no Unreleased entries (rare — e.g. a dependency-only rebuild)'
+        required: false
+        default: false
+        type: boolean
+
+permissions:
+  contents: write
+  actions: write # needed to dispatch publish.yml
+
+concurrency:
+  group: release-pubdev
+  cancel-in-progress: false
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # full history + tags
+
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          flutter-version-file: .fvmrc
+
+      - name: Configure git identity
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      # Everything below this step mutates state, so a forgotten changelog entry is caught here,
+      # where re-running is free and leaves no dangling tag or half-finished release.
+      - name: Check changelog and collect release notes
+        env:
+          ALLOW_EMPTY: ${{ inputs.allow_empty_changelog }}
+        run: |
+          if [ "$(grep -m1 '^## ' CHANGELOG.md)" != "## Unreleased" ]; then
+            echo "::error file=CHANGELOG.md::CHANGELOG.md must start with a '## Unreleased' section." >&2
+            exit 1
+          fi
+
+          # Everything between the `## Unreleased` heading and the next `## ` heading.
+          awk '/^## /{ if (++n > 1) exit; next } n' CHANGELOG.md > "$RUNNER_TEMP/RELEASE_NOTES.md"
+
+          if [ -z "$(tr -d '[:space:]' < "$RUNNER_TEMP/RELEASE_NOTES.md")" ]; then
+            if [ "$ALLOW_EMPTY" != "true" ]; then
+              echo "::error file=CHANGELOG.md::The '## Unreleased' section is empty. Add your entries and re-run, or re-run with 'allow_empty_changelog' checked." >&2
+              exit 1
+            fi
+            # Truncate whitespace-only notes so the release step can fall back cleanly.
+            : > "$RUNNER_TEMP/RELEASE_NOTES.md"
+            echo "No Unreleased entries; continuing because allow_empty_changelog was checked."
+          fi
+
+      - run: flutter pub get
+
+      - name: Quality gate
+        run: |
+          dart format --output=none --set-exit-if-changed .
+          flutter analyze
+          if [ -d test ]; then flutter test; fi
+          flutter pub publish --dry-run
+
+      # cider (https://pub.dev/packages/cider) is Dart's missing `npm version`: it rewrites
+      # `version:` in pubspec.yaml and prints the result. It gets the cases a sed would fumble —
+      # dropping build metadata (1.0.5+1 -> 1.0.6), and refusing to go backwards.
+      # `tail -n1` guards against any leading noise on stdout corrupting GITHUB_OUTPUT.
+      - name: Bump version
+        id: version
+        env:
+          BUMP: ${{ inputs.bump }}
+        run: |
+          dart pub global activate cider
+          new_version=$(dart pub global run cider bump "$BUMP" | tail -n1)
+          echo "version=$new_version" >> "$GITHUB_OUTPUT"
+          echo "tag=v$new_version" >> "$GITHUB_OUTPUT"
+
+      # Renames `## Unreleased` to the new version and leaves a fresh empty one above it, ready
+      # for the next round of entries.
+      - name: Promote the Unreleased section
+        env:
+          VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          awk -v heading="## $VERSION - $(date -u +%F)" '
+            !promoted && $0 == "## Unreleased" {
+              print "## Unreleased"; print ""; print heading
+              promoted = 1
+              next
+            }
+            { print }
+          ' CHANGELOG.md > "$RUNNER_TEMP/CHANGELOG.md"
+          mv "$RUNNER_TEMP/CHANGELOG.md" CHANGELOG.md
+
+      - name: Commit and tag
+        env:
+          TAG: ${{ steps.version.outputs.tag }}
+        run: |
+          git add pubspec.yaml CHANGELOG.md
+          git commit -m "chore(release): $TAG"
+          git tag -a "$TAG" -m "$TAG"
+
+      - name: Push commit and tag
+        run: git push --follow-tags
+
+      - name: Create GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ steps.version.outputs.tag }}
+        run: |
+          if [ -s "$RUNNER_TEMP/RELEASE_NOTES.md" ]; then
+            gh release create "$TAG" --title "$TAG" --notes-file "$RUNNER_TEMP/RELEASE_NOTES.md"
+          else
+            gh release create "$TAG" --title "$TAG" --generate-notes
+          fi
+
+      # Watch this run's result in Actions -> Publish to pub.dev; a failure there does not fail
+      # this workflow, and can be retried on its own against the tag.
+      - name: Dispatch pub.dev publish
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ steps.version.outputs.tag }}
+        run: gh workflow run publish.yml --ref "$TAG"
