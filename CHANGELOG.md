@@ -1,5 +1,3 @@
-## Unreleased
-
 ## 1.0.6 - 2026-07-27
 
 * Added GitHub Actions CI to automate version bumps, changelog updates, tagging and pub.dev publishing.
