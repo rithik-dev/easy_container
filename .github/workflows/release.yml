@@ -153,6 +153,9 @@ jobs:
       - name: Push commit and tag
         run: git push --follow-tags
 
+      # The pub.dev link is appended here rather than in CHANGELOG.md, which ships inside the
+      # package and has no business linking to itself. Note the link 404s for a minute or two:
+      # this release is created before the publish run below has finished uploading the version.
       - name: Create GitHub release
         env:
           GH_TOKEN: ${{ github.token }}
