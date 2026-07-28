@@ -1,3 +1,7 @@
+## 1.0.8 - 2026-07-28
+
+* Maintenance release; no user-facing changes.
+
 ## 1.0.7 - 2026-07-27
 
 * Maintenance release; no user-facing changes.
