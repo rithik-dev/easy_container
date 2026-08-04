@@ -127,27 +127,27 @@ Check out the full API reference [here](https://pub.dev/documentation/easy_conta
 import 'package:easy_container/easy_container.dart';
 import 'package:flutter/material.dart';
 
-void main() => runApp(_MainApp());
+void main() => runApp(const MainApp());
 
-class _MainApp extends StatelessWidget {
+class MainApp extends StatelessWidget {
+  const MainApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: SafeArea(
-        child: Scaffold(
-          body: Center(
-            child: EasyContainer(
-              height: 300,
-              width: 300,
-              child: const CircularProgressIndicator.adaptive(),
-              padding: 20,
-              elevation: 10,
-              onTap: () => debugPrint("Container Tapped"),
-              margin: 20,
-              borderRadius: 20,
-              color: Colors.red,
-            ),
+      home: Scaffold(
+        body: Center(
+          child: EasyContainer(
+            height: 300,
+            width: 300,
+            padding: 20,
+            elevation: 10,
+            margin: 20,
+            borderRadius: 20,
+            color: Colors.red,
+            onTap: () => debugPrint("Container Tapped"),
+            child: const CircularProgressIndicator.adaptive(),
           ),
         ),
       ),

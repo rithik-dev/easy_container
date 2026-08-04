@@ -1,10 +1,10 @@
-library easy_container;
+library;
 
 import 'package:flutter/material.dart';
 
 class EasyContainer extends StatefulWidget {
   const EasyContainer({
-    Key? key,
+    super.key,
     required this.child,
     this.onTap,
     this.height,
@@ -50,7 +50,7 @@ class EasyContainer extends StatefulWidget {
     this.borderWidth = 1,
     this.borderColor = Colors.black,
     this.borderStyle = BorderStyle.solid,
-  }) : super(key: key);
+  });
 
   /// Called every time [EasyContainer] is tapped;
   final VoidCallback? onTap;
@@ -439,8 +439,7 @@ class EasyContainer extends StatefulWidget {
   final bool showBorder;
 
   @override
-  // ignore: library_private_types_in_public_api
-  _EasyContainerState createState() => _EasyContainerState();
+  State<EasyContainer> createState() => _EasyContainerState();
 }
 
 class _EasyContainerState extends State<EasyContainer> {
@@ -454,8 +453,8 @@ class _EasyContainerState extends State<EasyContainer> {
   Widget build(BuildContext context) {
     if (!_isPressed) _elevation = widget.elevation;
 
-    final borderRadius =
-        widget.customBorderRadius ?? BorderRadius.circular(widget.borderRadius);
+    final theme = Theme.of(context);
+    final borderRadius = widget.customBorderRadius ?? BorderRadius.circular(widget.borderRadius);
 
     return SizedBox(
       height: widget.height,
@@ -473,11 +472,10 @@ class _EasyContainerState extends State<EasyContainer> {
               : BorderSide.none,
           borderRadius: borderRadius,
         ),
-        color: widget.color ?? Theme.of(context).cardColor,
+        color: widget.color ?? theme.cardColor,
         elevation: _elevation,
         margin: widget.customMargin ?? EdgeInsets.all(widget.margin),
-        shadowColor:
-            widget.shadowColor ?? widget.color ?? Theme.of(context).cardColor,
+        shadowColor: widget.shadowColor ?? widget.color ?? theme.cardColor,
         clipBehavior: widget.allowOverflow ? null : Clip.hardEdge,
         child: InkWell(
           borderRadius: borderRadius,
@@ -514,9 +512,8 @@ class _EasyContainerState extends State<EasyContainer> {
               }
               setState(() {});
             }
-            if (widget.onHighlightChanged != null) {
-              return widget.onHighlightChanged!(v);
-            }
+
+            widget.onHighlightChanged?.call(v);
           },
           child: Padding(
             padding: widget.customPadding ?? EdgeInsets.all(widget.padding),

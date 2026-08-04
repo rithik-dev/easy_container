@@ -1,9 +1,10 @@
 {
-  "workbench.colorCustomizations": {
-    "activityBar.background": "#18322E",
-    "titleBar.activeBackground": "#214641",
-    "titleBar.activeForeground": "#F8FCFB"
-  },
-  "dart.flutterSdkPath": ".fvm/versions/3.24.3",
-  "dart.lineLength": 80
+  "dart.flutterSdkPath": ".fvm/flutter_sdk",
+  "dart.lineLength": 120,
+  "[dart]": {
+    "editor.rulers": [
+      120
+    ],
+    "editor.formatOnSave": true
+  }
 }

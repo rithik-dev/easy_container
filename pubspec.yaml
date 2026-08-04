@@ -4,7 +4,8 @@ version: 1.0.8
 homepage: https://github.com/rithik-dev/easy_container
 repository: https://github.com/rithik-dev/easy_container
 issue_tracker: https://github.com/rithik-dev/easy_container/issues
-# documentation: https://github.com/rithik-dev/easy_container/blob/master/README.md
+documentation: https://github.com/rithik-dev/easy_container/blob/master/README.md
+
 topics: 
   - flutter
   - widget
@@ -13,17 +14,15 @@ topics:
   - card
 
 environment:
-  sdk: ">=2.12.0 <4.0.0"
-  flutter: ">=1.17.0"
+  sdk: ">=3.8.0 <4.0.0"
+  flutter: ">=3.32.0"
 
-scripts:
-  pre_publish: dart format .; flutter pub publish --dry-run
-  publish_skip_validation: flutter pub publish --skip-validation
-  publish: flutter pub publish
-  
 dependencies:
   flutter:
     sdk: flutter
 
 dev_dependencies:
-  flutter_lints: ^5.0.0
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^6.0.0
