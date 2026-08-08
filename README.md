@@ -5,8 +5,8 @@
 [![pub points](https://img.shields.io/pub/points/easy_container)](https://pub.dev/packages/easy_container/score)
 [![license MIT](https://img.shields.io/badge/license-MIT-purple.svg)](https://opensource.org/licenses/MIT)
 
-[![portfolio](https://img.shields.io/badge/portfolio-rithikbhandari.dev-6C63FF?style=for-the-badge)](https://rithikbhandari.dev)
-[![publisher](https://img.shields.io/pub/publisher/easy_container?style=for-the-badge)](https://pub.dev/publishers/rithikbhandari.dev/packages)
+<a href="https://rithikbhandari.dev" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/portfolio-rithikbhandari.dev-6C63FF?style=for-the-badge" alt="portfolio"></a>
+<a href="https://pub.dev/publishers/rithikbhandari.dev/packages" target="_blank" rel="noopener"><img src="https://img.shields.io/pub/publisher/easy_container?style=for-the-badge" alt="publisher"></a>
 
 ---
 
@@ -66,7 +66,7 @@ It also sinks its elevation while pressed, and forwards the rest of `InkWell`'s 
 
 | Sample Containers | On Pressed Animation |
 |-----------------------------------|-------------------------------------|
-| <img src="example/screenshots/containers.webp" height="500"> | <img src="https://github.com/rithik-dev/easy_container/raw/master/.github/assets/pressed.webp" height="500"> |
+| <img src="https://github.com/rithik-dev/easy_container/raw/master/pub_screenshots/containers.webp" height="500"> | <img src="https://github.com/rithik-dev/easy_container/raw/master/.github/assets/pressed.webp" height="500"> |
 
 ---
 
