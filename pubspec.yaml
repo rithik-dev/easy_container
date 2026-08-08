@@ -6,6 +6,10 @@ repository: https://github.com/rithik-dev/easy_container
 issue_tracker: https://github.com/rithik-dev/easy_container/issues
 documentation: https://github.com/rithik-dev/easy_container/blob/master/README.md
 
+screenshots:
+  - description: 'EasyContainers with different padding, colors, elevations and border radii.'
+    path: example/screenshots/containers.webp
+
 topics: 
   - flutter
   - widget
