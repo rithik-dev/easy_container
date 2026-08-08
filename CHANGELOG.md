@@ -1,3 +1,7 @@
+## 1.2.0 - 2026-08-08
+
+* Regenerated the example app's Android project for Flutter 3.44. It was still on the 3.24 scaffolding, pinned to Gradle 8.3, so running the example on Android failed with "Your project's Gradle version (8.3.0) is lower than Flutter's minimum supported version of 8.7.0". It now uses Gradle 9.1, AGP 9 and the Kotlin build DSL. The package itself is unchanged.
+
 ## 1.1.1 - 2026-08-07
 
 * Maintenance release; no user-facing changes.
