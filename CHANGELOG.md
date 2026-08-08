@@ -1,3 +1,7 @@
+## 1.2.4 - 2026-08-08
+
+* Maintenance release; no user-facing changes.
+
 ## 1.2.3 - 2026-08-08
 
 * Maintenance release; no user-facing changes.
