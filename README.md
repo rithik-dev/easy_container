@@ -1,10 +1,12 @@
 # [EasyContainer](https://pub.dev/packages/easy_container) For Flutter
 [![pub package](https://img.shields.io/pub/v/easy_container.svg)](https://pub.dev/packages/easy_container)
+[![downloads](https://img.shields.io/pub/dm/easy_container)](https://pub.dev/packages/easy_container)
 [![likes](https://img.shields.io/pub/likes/easy_container)](https://pub.dev/packages/easy_container/score)
-[![popularity](https://img.shields.io/pub/popularity/easy_container)](https://pub.dev/packages/easy_container/score)
 [![pub points](https://img.shields.io/pub/points/easy_container)](https://pub.dev/packages/easy_container/score)
-[![code size](https://img.shields.io/github/languages/code-size/rithik-dev/easy_container)](https://github.com/rithik-dev/easy_container)
 [![license MIT](https://img.shields.io/badge/license-MIT-purple.svg)](https://opensource.org/licenses/MIT)
+
+[![portfolio](https://img.shields.io/badge/portfolio-rithikbhandari.dev-6C63FF?style=for-the-badge)](https://rithikbhandari.dev)
+[![publisher](https://img.shields.io/pub/publisher/easy_container?style=for-the-badge)](https://pub.dev/publishers/rithikbhandari.dev/packages)
 
 ---
 
@@ -18,7 +20,7 @@ An easy to use container for flutter with built in gesture detectors and a lot o
 - **[✨ Features](#-features)**
 - **[❓ Usage](#-usage)**  
 - **[🎯 Sample Usage](#-sample-usage)**
-- **[👤 Collaborators](#-collaborators)**
+- **[👤 Author](#-author)**
 
 ---
 
@@ -158,9 +160,11 @@ class MainApp extends StatelessWidget {
 
 ---
 
-# 👤 Collaborators
+# 👤 Author
 
+Built and maintained by **Rithik Bhandari**, a mobile developer building cross-platform apps with Flutter.
 
-| Name | GitHub | Linkedin |
-|-----------------------------------|-------------------------------------|-------------------------------------|
-| Rithik Bhandari | [github/rithik-dev](https://github.com/rithik-dev) | [linkedin/rithik-bhandari](https://www.linkedin.com/in/rithik-bhandari) |
+- 🌐 Portfolio: **[rithikbhandari.dev](https://rithikbhandari.dev)**
+- 📦 More packages: [pub.dev/publishers/rithikbhandari.dev](https://pub.dev/publishers/rithikbhandari.dev/packages)
+- 💻 GitHub: [@rithik-dev](https://github.com/rithik-dev)
+- 💼 LinkedIn: [rithik-bhandari](https://www.linkedin.com/in/rithik-bhandari)
