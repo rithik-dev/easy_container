@@ -16,11 +16,49 @@ An easy to use container for flutter with built in gesture detectors and a lot o
 
 # 🗂️ Table of Contents
 
+- **[🤔 Why not Container or Card?](#-why-not-container-or-card)**
 - **[📷 Screenshots](#-screenshots)**
 - **[✨ Features](#-features)**
 - **[❓ Usage](#-usage)**  
 - **[🎯 Sample Usage](#-sample-usage)**
 - **[👤 Author](#-author)**
+
+---
+
+# 🤔 Why not Container or Card?
+
+A tappable, elevated, rounded, padded box normally means nesting four widgets and repeating the
+border radius so the ripple clips correctly:
+
+```dart
+Card(
+  elevation: 4,
+  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+  child: InkWell(
+    borderRadius: BorderRadius.circular(8),
+    onTap: () {},
+    child: const Padding(
+      padding: EdgeInsets.all(16),
+      child: Text("Hello"),
+    ),
+  ),
+)
+```
+
+`EasyContainer` is that, as one widget, with plain doubles instead of `EdgeInsets`:
+
+```dart
+EasyContainer(
+  elevation: 4,
+  borderRadius: 8,
+  padding: 16,
+  onTap: () {},
+  child: const Text("Hello"),
+)
+```
+
+It also sinks its elevation while pressed, and forwards the rest of `InkWell`'s callbacks such as
+`onLongPress`, `onDoubleTap` and `onHover`.
 
 ---
 
