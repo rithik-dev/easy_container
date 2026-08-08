@@ -66,7 +66,7 @@ It also sinks its elevation while pressed, and forwards the rest of `InkWell`'s 
 
 | Sample Containers | On Pressed Animation |
 |-----------------------------------|-------------------------------------|
-| <img src="https://user-images.githubusercontent.com/56810766/115352432-fc1f9900-a1d4-11eb-8c3a-79b2baa46104.png" height="500"> | <img src="https://user-images.githubusercontent.com/56810766/119640316-1da81c00-be36-11eb-83fd-fcffda516f1e.gif" height="500"> |
+| <img src="example/screenshots/containers.webp" height="500"> | <img src="https://github.com/rithik-dev/easy_container/raw/master/.github/assets/pressed.webp" height="500"> |
 
 ---
 
