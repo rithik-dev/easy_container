@@ -6,6 +6,11 @@ repository: https://github.com/rithik-dev/easy_container
 issue_tracker: https://github.com/rithik-dev/easy_container/issues
 documentation: https://github.com/rithik-dev/easy_container/blob/master/README.md
 
+# Kept under example/ rather than .github/ with the README's other images, because screenshots have
+# to ship inside the published archive: pub.dev builds the search thumbnail and the package page
+# gallery from the file it actually receives, and it excludes hidden directories. A path under
+# .github/ fails silently, since `pub publish --dry-run` only checks the file exists on disk.
+# The flip side is that everyone depending on this package downloads it, so keep it small.
 screenshots:
   - description: 'EasyContainers with different padding, colors, elevations and border radii.'
     path: example/screenshots/containers.webp
